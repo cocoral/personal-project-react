@@ -1,4 +1,4 @@
-[
+export const events = [
     {
         id: "9006757503",
         type: "PushEvent",
