@@ -4,9 +4,17 @@ class LogInForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            
+            userName : null
         }
     }
+
+    handleUserLogin = e =>{
+        e.preventDefault();
+        this.props.logInHandler(this.state.userName)
+    }
+
+    updateUserName = e => this.setState({ userName: e.target.value})
+
     render() {
         return (
             <div className="form-login">
@@ -16,10 +24,9 @@ class LogInForm extends Component {
                 <h2>Log In:</h2>
                 <form id="log-in-form">
                 <div>
-                    <input type="text" name="userName" placeholder="User Name"></input>
+                    <input type="text" name="userName" placeholder="User Name" onChange = {this.updateUserName}></input>
                 </div>
-                    <div><input type="password" name="pw" placeholder="Password"></input></div>
-                    <button onClick={this.props.logInHandler}>Submit</button>
+                    <button onClick={this.handleUserLogin}>Submit</button>
                 </form>
             </div>
         );

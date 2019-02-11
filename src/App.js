@@ -11,13 +11,16 @@ class App extends Component {
       username: null
     }
   }
-  logInHandler = e =>{
-    e.preventDefault();
-    //Should validate the login
+
+  logInHandler = userName =>{
     this.setState({
       isLoggedIn: true,
-      username: "testUser"
+      username: userName
     })
+  };
+
+  updateUserName = e => {
+
   };
   
   render() {
