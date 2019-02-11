@@ -19,9 +19,6 @@ class App extends Component {
     })
   };
 
-  updateUserName = e => {
-
-  };
   
   render() {
     
