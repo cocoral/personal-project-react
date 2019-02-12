@@ -3,6 +3,7 @@ import './App.css';
 import Profile from './Profile';
 import LogInForm from './LogInForm';
 
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -25,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
       {this.state.isLoggedIn ? 
-          <Profile username={this.state.username}/> : <LogInForm logInHandler={this.logInHandler.bind(this)} username={this.state.username}/>
+          <Profile username={this.state.username}/> : <LogInForm username={this.state.username}/>
       }
       </div>
     );

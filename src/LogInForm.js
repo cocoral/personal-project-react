@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+import { logInHandler } from './actions'
+
 class LogInForm extends Component {
     constructor(props) {
         super(props)
@@ -10,12 +13,14 @@ class LogInForm extends Component {
 
     handleUserLogin = e =>{
         e.preventDefault();
-        this.props.logInHandler(this.state.userName)
+        console.log(this.props)
+        this.props.logInHandler(this.state.userName);
     }
 
     updateUserName = e => this.setState({ userName: e.target.value})
 
     render() {
+        console.log(this.props.logInHandler)
         return (
             <div className="form-login">
                 <header className="App-header">
@@ -32,5 +37,16 @@ class LogInForm extends Component {
         );
     }
 }
+const mapStateToProps = (state) =>{
+    console.log(state);
+    return {username: state.username}
+}
 
-export default LogInForm;
+
+const mapDispatchToProps = {
+    logInHandler
+}
+
+// export default LogInForm;
+export default connect(mapStateToProps, mapDispatchToProps)(LogInForm);
+ 

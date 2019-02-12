@@ -8,26 +8,28 @@ class Profile extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            events: [],
-            repos: []
+            // events: [],
+            // repos: []
+            events: events,
+            repos: repos
         }
     }
 
     componentDidMount() {
         //test data is from https://api.github.com/users/pkanal/repos
         //Do api calls here
-        fetch(`https://api.github.com/users/${this.props.username}/repos`)
-          .then(data => data.json())
-          //TODO: clean the data, only assigned the simplified data
-          .then(res=> this.setState({repos: res}))
-          .catch(e=>console.log(e))
+        // fetch(`https://api.github.com/users/${this.props.username}/repos`)
+        //   .then(data => data.json())
+        //  //TODO: clean the data, only assign the simplified data
+        //   .then(res=> this.setState({repos: res}))
+        //   .catch(e=>console.log(e))
 
         //test data is from https://api.github.com/users/pkanal/events
-        fetch(`https://api.github.com/users/${this.props.username}/events`)
-          .then(data => data.json())
-          //TODO: clean the data, only assigned the simplified data
-          .then(res => this.setState({ events: res }))
-          .catch(e => console.log(e))
+        // fetch(`https://api.github.com/users/${this.props.username}/events`)
+        //   .then(data => data.json())
+        //   //TODO: clean the data, only assign the simplified data
+        //   .then(res => this.setState({ events: res }))
+        //   .catch(e => console.log(e))
     }
 
     render() {
