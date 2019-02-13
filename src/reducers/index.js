@@ -1,12 +1,10 @@
-import { combineReducers } from 'redux';
-
 
 const initialState = {
     isLoggedIn: false,
     username: null,
-    repos: [],
+    repos: null,
     isReposUpdated: false,
-    events: [],
+    events: null,
     isEventsUpdated: false,
 }
 

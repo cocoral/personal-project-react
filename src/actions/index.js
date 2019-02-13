@@ -34,8 +34,7 @@ export const handleRepos = username => dispatch => {
                 'url': repo.url
             }
         }))
-        .then(niceRepos => dispatch(_handleReposAction(niceRepos)))
-
+        .then(niceRepos => dispatch(_handleReposAction(niceRepos)));
 }
 
 export const handleEvents = username => dispatch => {
@@ -49,5 +48,5 @@ export const handleEvents = username => dispatch => {
                 'action': event.payload.action
             }
         }))
-        .then(niceEvents => dispatch(_handleEventsAction(niceEvents)))
+        .then(niceEvents => dispatch(_handleEventsAction(niceEvents)));
 }
