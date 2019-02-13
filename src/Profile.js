@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 //Those 2 are testing data. 
 import { repos } from './data.repos';
@@ -74,4 +75,8 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+    return { username: state.username }
+}
+
+export default connect(mapStateToProps)(Profile);

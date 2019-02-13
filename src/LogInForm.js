@@ -13,18 +13,17 @@ class LogInForm extends Component {
 
     handleUserLogin = e =>{
         e.preventDefault();
-        console.log(this.props)
         this.props.logInHandler(this.state.userName);
+        console.log("props:", this.props)
     }
 
     updateUserName = e => this.setState({ userName: e.target.value})
 
     render() {
-        console.log(this.props.logInHandler)
         return (
             <div className="form-login">
                 <header className="App-header">
-                    Hello, {this.props.username}.
+                    <p>Hello, insert your github handler below to view your repos.</p>
                 </header>
                 <h2>Log In:</h2>
                 <form id="log-in-form">
@@ -37,8 +36,8 @@ class LogInForm extends Component {
         );
     }
 }
+
 const mapStateToProps = (state) =>{
-    console.log(state);
     return {username: state.username}
 }
 
@@ -47,6 +46,5 @@ const mapDispatchToProps = {
     logInHandler
 }
 
-// export default LogInForm;
 export default connect(mapStateToProps, mapDispatchToProps)(LogInForm);
  
