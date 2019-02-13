@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { logInHandler } from './actions'
+import { handleUserUpdate, handleRepos, handleEvents } from './actions'
 
 class LogInForm extends Component {
     constructor(props) {
@@ -13,18 +13,18 @@ class LogInForm extends Component {
 
     handleUserLogin = e =>{
         e.preventDefault();
-        console.log(this.props)
-        this.props.logInHandler(this.state.userName);
+        this.props.handleUserUpdate(this.state.userName);
+        this.props.handleRepos(this.state.userName)
+        this.props.handleEvents(this.state.userName)
     }
 
     updateUserName = e => this.setState({ userName: e.target.value})
 
     render() {
-        console.log(this.props.logInHandler)
         return (
             <div className="form-login">
                 <header className="App-header">
-                    Hello, {this.props.username}.
+                    <p>Hello, insert your github handler below to view your repos.</p>
                 </header>
                 <h2>Log In:</h2>
                 <form id="log-in-form">
@@ -37,16 +37,17 @@ class LogInForm extends Component {
         );
     }
 }
+
 const mapStateToProps = (state) =>{
-    console.log(state);
     return {username: state.username}
 }
 
 
 const mapDispatchToProps = {
-    logInHandler
+    handleUserUpdate,
+    handleRepos,
+    handleEvents
 }
 
-// export default LogInForm;
 export default connect(mapStateToProps, mapDispatchToProps)(LogInForm);
  

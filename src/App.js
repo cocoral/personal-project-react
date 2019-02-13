@@ -1,36 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+
 import './App.css';
 import Profile from './Profile';
 import LogInForm from './LogInForm';
 
-
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isLoggedIn: false,
-      username: null
+const App = (props) => {
+  return (
+    <div className="App">
+    {props.isLoggedIn ? 
+        <Profile /> : <LogInForm />
     }
-  }
+    </div>
+  );
+};
 
-  logInHandler = userName =>{
-    this.setState({
-      isLoggedIn: true,
-      username: userName
-    })
-  };
-
-  
-  render() {
-    
-    return (
-      <div className="App">
-      {this.state.isLoggedIn ? 
-          <Profile username={this.state.username}/> : <LogInForm username={this.state.username}/>
-      }
-      </div>
-    );
-  }
+const mapStateToProps = (state) => {
+  return { isLoggedIn: state.isLoggedIn }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
