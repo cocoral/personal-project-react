@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { logInHandler } from './actions'
+import { handleUserUpdate, handleRepos, handleEvents } from './actions'
 
 class LogInForm extends Component {
     constructor(props) {
@@ -13,8 +13,9 @@ class LogInForm extends Component {
 
     handleUserLogin = e =>{
         e.preventDefault();
-        this.props.logInHandler(this.state.userName);
-        console.log("props:", this.props)
+        this.props.handleUserUpdate(this.state.userName);
+        this.props.handleRepos(this.state.userName)
+        this.props.handleEvents(this.state.userName)
     }
 
     updateUserName = e => this.setState({ userName: e.target.value})
@@ -43,7 +44,9 @@ const mapStateToProps = (state) =>{
 
 
 const mapDispatchToProps = {
-    logInHandler
+    handleUserUpdate,
+    handleRepos,
+    handleEvents
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogInForm);
