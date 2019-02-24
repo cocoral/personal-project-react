@@ -8,10 +8,9 @@ const Profile = (props) => {
                 Hello, {props.username}.
             </header>
             <h2>Forked repos:</h2>
-            <p>{!props.isReposUpdated ? 'Loading...' : ''}</p>
             {
-                props.repos === null ?  '' :
-                    props.repos === 0 ? 'Nothing here!' : 
+                props.repos === null ? <p>Loading...</p> :
+                    props.repos.length === 0 ? <p>Nothing here!</p> : 
                 props.repos.map((repo, i) => {
                     return (
                         <div className='forked-item' key={i}>
@@ -25,10 +24,9 @@ const Profile = (props) => {
             }
 
             <h2>Latest pull request: </h2>
-            <p>{!props.isEventsUpdated ? 'Loading...' : ''}</p>
             {
-                props.events === null ? '' :
-                    props.events.length === 0 ? 'Nothing here!' : 
+                props.events === null ? <p>Loading...</p> :
+                    props.events.length === 0 ? <p>Nothing here!</p> : 
                 props.events.map((event, i) => {
                     return (
                         <div className='pull-item' key={i}>
@@ -51,9 +49,7 @@ const mapStateToProps = (state) => {
     return { 
         username: state.username,
         repos: state.repos,
-        isReposUpdated: state.isReposUpdated,
         events: state.events,
-        isEventsUpdated: state.isEventsUpdated
     }
 }
 

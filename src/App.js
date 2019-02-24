@@ -16,7 +16,9 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { isLoggedIn: state.isLoggedIn }
+  return { 
+    isLoggedIn: state.username === null ? false : true
+  }
 }
 
 export default connect(mapStateToProps)(App);
